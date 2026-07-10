@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tandem-Cup 2026 – Live-Ergebnisse</title>
+  <meta name="description" content="Live-Ergebnisse, Zeitplan und Regeln zum Tandem-Cup 2026 in Eppertshausen.">
+
+  <style>
+    :root {
+      --navy: #082d4d;
+      --blue: #0f5f94;
+      --gold: #d5a32b;
+      --light: #f4f7fa;
+      --white: #ffffff;
+      --text: #18222d;
+      --muted: #687684;
+      --green: #159b50;
+      --border: #dce4ea;
+      --shadow: 0 10px 30px rgba(8, 45, 77, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 110px 1fr 150px;
+      gap: 24px;
+      align-items: center;
+      padding: 28px max(20px, 5vw);
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(8,45,77,.98), rgba(15,95,148,.94)),
+        url("assets/sektoren.jpg") center/cover no-repeat;
+      border-bottom: 6px solid var(--gold);
+    }
+
+    .hero-logo,
+    .hero-trophy {
+      width: 100%;
+      height: 110px;
+      object-fit: contain;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+    }
+
+    .hero-trophy {
+      object-fit: cover;
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #d8e9f4;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 4.7rem);
+      line-height: 1;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      padding: 13px 18px;
+      background: rgba(255,255,255,.97);
+      box-shadow: 0 3px 15px rgba(0,0,0,.08);
+      backdrop-filter: blur(8px);
+    }
+
+    nav a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    main {
+      width: min(1120px, calc(100% - 30px));
+      margin: 30px auto;
+    }
+
+    .card {
+      margin-bottom: 24px;
+      padding: 24px;
+      background: var(--white);
+      border-radius: 18px;
+      border-top: 5px solid var(--gold);
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .countdown-box {
+      padding: 18px 10px;
+      text-align: center;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 14px;
+    }
+
+    .countdown-box strong {
+      display: block;
+      font-size: 2rem;
+      line-height: 1;
+      color: #ffd66d;
+    }
+
+    .countdown-box span {
+      display: block;
+      margin-top: 6px;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .live-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .live-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(21,155,80,.16);
+    }
+
+    #updated {
+      color: var(--muted);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-bottom: 26px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      background: var(--white);
+    }
+
+    th,
+    td {
+      padding: 12px 11px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      color: var(--white);
+      background: var(--navy);
+      white-space: nowrap;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f7f9fb;
+    }
+
+    tbody tr:first-child {
+      background: #fff4c9;
+      font-weight: 700;
+    }
+
+    .schedule-grid,
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .timeline p {
+      margin: 10px 0;
+    }
+
+    .timeline b {
+      color: var(--blue);
+    }
+
+    .sector-image {
+      width: 100%;
+      max-height: 700px;
+      object-fit: contain;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fafafa;
+    }
+
+    .rule-box {
+      padding: 18px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--blue);
+      border-radius: 12px;
+    }
+
+    .rule-box h3 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    .food-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .food-item {
+      padding: 18px;
+      text-align: center;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    footer {
+      padding: 28px 20px;
+      text-align: center;
+      color: var(--white);
+      background: var(--navy);
+      border-top: 5px solid var(--gold);
+    }
+
+    .status-note {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: 80px 1fr;
+      }
+
+      .hero-trophy {
+        display: none;
+      }
+
+      .hero-logo {
+        height: 80px;
+      }
+
+      .schedule-grid,
+      .rules-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .food-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .food-list {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <img class="hero-logo" src="assets/vereinslogo.png" alt="Logo Angelverein Eppertshausen">
+
+    <div>
+      <p class="eyebrow">Angelverein Eppertshausen e. V.</p>
+      <h1>Tandem-Cup 2026</h1>
+      <p class="subtitle">11.–12. Juli 2026 · Peter-Beckmann-Teich</p>
+    </div>
+
+    <img class="hero-trophy" src="assets/pokal.png" alt="Peter-Beckmann-Cup-Pokal">
+  </header>
+
+  <nav>
+    <a href="#live">Live-Ergebnisse</a>
+    <a href="#countdown">Countdown</a>
+    <a href="#zeitplan">Zeitplan</a>
+    <a href="#sektoren">Sektoren</a>
+    <a href="#regeln">Regeln</a>
+    <a href="#verpflegung">Verpflegung</a>
+  </nav>
+
+  <main>
+    <section id="countdown" class="card">
+      <h2>Countdown zum 1. Durchgang</h2>
+      <p class="status-note">Start: Samstag, 11. Juli 2026, 08:00 Uhr</p>
+
+      <div class="countdown">
+        <div class="countdown-box">
+          <strong id="days">0</strong>
+          <span>Tage</span>
+        </div>
+        <div class="countdown-box">
+          <strong id="hours">0</strong>
+          <span>Stunden</span>
+        </div>
+        <div class="countdown-box">
+          <strong id="minutes">0</strong>
+          <span>Minuten</span>
+        </div>
+        <div class="countdown-box">
+          <strong id="seconds">0</strong>
+          <span>Sekunden</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="live" class="card">
+      <div class="section-head">
+        <div class="live-label">
+          <span class="live-dot"></span>
+          Live-Ergebnisse
+        </div>
+        <small id="updated">Ergebnisse werden geladen …</small>
+      </div>
+
+      <h2>Teamwertung</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Platz</th>
+              <th>Team</th>
+              <th>Punkte</th>
+              <th>Gewicht</th>
+              <th>Fische</th>
+            </tr>
+          </thead>
+          <tbody id="teamBody"></tbody>
+        </table>
+      </div>
+
+      <h2>Einzelwertung</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Platz</th>
+              <th>Angler</th>
+              <th>Team</th>
+              <th>Punkte</th>
+              <th>Gewicht</th>
+              <th>Fische</th>
+            </tr>
+          </thead>
+          <tbody id="anglerBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="zeitplan" class="schedule-grid">
+      <article class="card timeline">
+        <h2>Samstag, 11.07.2026</h2>
+        <p><b>06:30 Uhr</b> – Live-Auslosung Durchgang 1</p>
+        <p><b>08:00–12:00 Uhr</b> – Durchgang 1</p>
+        <p><b>Anschließend</b> – Essen</p>
+        <p><b>14:30 Uhr</b> – Live-Auslosung Durchgang 2</p>
+        <p><b>16:00–20:00 Uhr</b> – Durchgang 2</p>
+        <p><b>Anschließend</b> – Essen</p>
+      </article>
+
+      <article class="card timeline">
+        <h2>Sonntag, 12.07.2026</h2>
+        <p><b>05:45 Uhr</b> – Gemeinsames Frühstück</p>
+        <p><b>06:30 Uhr</b> – Bekanntgabe der automatisch erstellten Auslosung für Durchgang 3</p>
+        <p><b>08:00–12:00 Uhr</b> – Durchgang 3</p>
+        <p><b>Anschließend</b> – Essen</p>
+        <p><b>Anschließend</b> – Siegerehrung</p>
+      </article>
+    </section>
+
+    <section id="sektoren" class="card">
+      <h2>Sektoreinteilung</h2>
+      <img class="sector-image" src="assets/sektoren.jpg" alt="Sektoreinteilung des Tandem-Cups">
+
+      <p>
+        <b>Sektor A:</b> Plätze 1, 2, 7, 9 und 10<br>
+        <b>Sektor B:</b> Plätze 3, 4, 5, 6 und 8
+      </p>
+    </section>
+
+    <section id="regeln" class="card">
+      <h2>Wettkampfregeln</h2>
+
+      <div class="rules-grid">
+        <div class="rule-box">
+          <h3>Auslosung</h3>
+          <p>Die Auslosung für den 1. und 2. Durchgang erfolgt live vor allen Teilnehmern.</p>
+          <p>Der 3. Durchgang wird automatisch per Zufallsverfahren vor Ort erstellt und bekannt gegeben.</p>
+          <p>Jedes Team angelt nur einmal auf jedem Platz. Nach den ersten beiden Durchgängen hat jedes Team mindestens einmal in jedem Sektor geangelt.</p>
+        </div>
+
+        <div class="rule-box">
+          <h3>Boxenregel</h3>
+          <p>Jeder Angelplatz wird durch eine Box markiert.</p>
+          <p>Beide Teammitglieder müssen sich während des gesamten Wettkampfes innerhalb ihrer Box aufhalten.</p>
+          <p>Auch während eines Drills darf die Box nicht verlassen werden.</p>
+          <p>Jeder Fisch muss ausschließlich aus der eigenen Box heraus gedrillt und gelandet werden.</p>
+        </div>
+
+        <div class="rule-box">
+          <h3>Teamwertung</h3>
+          <p>Die Platzierungen aller drei Durchgänge werden addiert.</p>
+          <p>Sieger ist das Team mit der niedrigsten Gesamtpunktzahl.</p>
+          <p>Bei Punktgleichheit entscheiden Gesamtgewicht, Gesamtstückzahl und anschließend die beste Einzelplatzierung.</p>
+        </div>
+
+        <div class="rule-box">
+          <h3>Einzelwertung</h3>
+          <p>In jedem Durchgang werden alle Angler gemeinsam gewertet.</p>
+          <p>Die Platzierungen aller drei Durchgänge werden addiert.</p>
+          <p>Sieger ist der Angler mit der niedrigsten Gesamtpunktzahl.</p>
+          <p>Bei Punktgleichheit entscheiden Gesamtgewicht und Gesamtstückzahl.</p>
+        </div>
+
+        <div class="rule-box">
+          <h3>Umwelt- und Gewässerschutz</h3>
+          <p>Überschüssiges Futter darf nicht im See entsorgt werden.</p>
+          <p>Nicht verbrauchtes Futter ist für den nächsten Durchgang aufzubewahren oder im Biotop zu entsorgen.</p>
+          <p>Jeder Teilnehmer verlässt seinen Angelplatz sauber und nimmt seinen Müll mit.</p>
+        </div>
+
+        <div class="rule-box">
+          <h3>Organisatorisches</h3>
+          <p>Die Auslosung beziehungsweise Bekanntgabe beginnt jeweils 90 Minuten vor Angelbeginn.</p>
+          <p>Das Wiegen erfolgt unmittelbar nach dem jeweiligen Durchgang.</p>
+          <p>Mit der Teilnahme am Tandem-Cup werden sämtliche Wettkampfregeln anerkannt.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="verpflegung" class="card">
+      <h2>Verpflegung</h2>
+
+      <div class="food-list">
+        <div class="food-item">
+          <b>Nach Durchgang 1</b><br>
+          Essen für alle Teilnehmer
+        </div>
+
+        <div class="food-item">
+          <b>Nach Durchgang 2</b><br>
+          Essen für alle Teilnehmer
+        </div>
+
+        <div class="food-item">
+          <b>Sonntag, 05:45 Uhr</b><br>
+          Gemeinsames Frühstück
+        </div>
+
+        <div class="food-item">
+          <b>Nach Durchgang 3</b><br>
+          Essen für alle Teilnehmer
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><b>Wir wünschen allen Teilnehmern viel Erfolg und ein kräftiges Petri Heil!</b></p>
+    <p>„Der Pokal gewinnt sich nicht von allein – ein bisschen angeln muss man auch können.“</p>
+  </footer>
+
+  <script>
+    const grams = value =>
+      new Intl.NumberFormat("de-DE").format(value || 0) + " g";
+
+    async function loadResults() {
+      try {
+        const response = await fetch("data.json?ts=" + Date.now(), {
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          throw new Error("Ergebnisse konnten nicht geladen werden.");
+        }
+
+        const data = await response.json();
+
+        document.getElementById("updated").textContent =
+          "Stand: " + data.lastUpdated;
+
+        const teams = [...data.teams].sort(
+          (a, b) =>
+            a.points - b.points ||
+            b.weight - a.weight ||
+            b.fish - a.fish
+        );
+
+        document.getElementById("teamBody").innerHTML = teams
+          .map(
+            (team, index) => `
+              <tr>
+                <td>${index + 1}</td>
+                <td>${team.name}</td>
+                <td>${team.points}</td>
+                <td>${grams(team.weight)}</td>
+                <td>${team.fish}</td>
+              </tr>
+            `
+          )
+          .join("");
+
+        const anglers = [...data.anglers].sort(
+          (a, b) =>
+            a.points - b.points ||
+            b.weight - a.weight ||
+            b.fish - a.fish
+        );
+
+        document.getElementById("anglerBody").innerHTML = anglers
+          .map(
+            (angler, index) => `
+              <tr>
+                <td>${index + 1}</td>
+                <td>${angler.name}</td>
+                <td>${angler.team}</td>
+                <td>${angler.points}</td>
+                <td>${grams(angler.weight)}</td>
+                <td>${angler.fish}</td>
+              </tr>
+            `
+          )
+          .join("");
+
+      } catch (error) {
+        document.getElementById("updated").textContent = error.message;
+      }
+    }
+
+    function updateCountdown() {
+      const target = new Date("2026-07-11T08:00:00+02:00").getTime();
+      const now = Date.now();
+      const distance = target - now;
+
+      if (distance <= 0) {
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "0";
+        document.getElementById("minutes").textContent = "0";
+        document.getElementById("seconds").textContent = "0";
+        return;
+      }
+
+      document.getElementById("days").textContent =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+      document.getElementById("hours").textContent =
+        Math.floor((distance / (1000 * 60 * 60)) % 24);
+
+      document.getElementById("minutes").textContent =
+        Math.floor((distance / (1000 * 60)) % 60);
+
+      document.getElementById("seconds").textContent =
+        Math.floor((distance / 1000) % 60);
+    }
+
+    loadResults();
+    updateCountdown();
+
+    setInterval(loadResults, 60000);
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
