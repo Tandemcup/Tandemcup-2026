@@ -1,1 +1,75 @@
-
+{
+  "lastUpdated": "Noch keine Ergebnisse eingetragen",
+  "notice": "Willkommen beim Tandem-Cup 2026. Die Live-Ergebnisse werden nach jedem Wiegen aktualisiert.",
+  "teams": [
+    {
+      "name": "Team Lederhut",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    },
+    {
+      "name": "Team Funkenflug",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    },
+    {
+      "name": "Team FKK Rom",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    },
+    {
+      "name": "Team Preston Erdinger",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    },
+    {
+      "name": "Team Wilde Kerle",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    },
+    {
+      "name": "Team Küche",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    },
+    {
+      "name": "Team Alt Internationale",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    },
+    {
+      "name": "Team Nullfänger",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    },
+    {
+      "name": "Team Blind Date",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    },
+    {
+      "name": "Team Pablo",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    }
+  ],
+  "anglers": [
+    {
+      "name": "Noch offen",
+      "team": "-",
+      "points": 0,
+      "weight": 0,
+      "fish": 0
+    }
+  ]
+}
