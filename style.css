@@ -1,1 +1,0 @@
-// Platz für zukünftige Erweiterungen
